@@ -5,6 +5,7 @@
   font-size: 13px;
   opacity: 0;
   transition: opacity 0.3s;
+  padding: 24px 0;
   width: 100%;
 }
 

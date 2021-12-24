@@ -7,9 +7,11 @@ import styles from "./Setting.module.css";
 
 type SettingProps = {
   className?: string;
+  showSymbolPreset: boolean;
   alwaysShow: boolean;
   range: Range;
   unit: Unit;
+  onSelectSymbol: (symbol: string) => void;
   onReset: () => void;
   onRangeChange: (range: Range) => void;
   onUnitChange: (unit: Unit) => void;
@@ -18,9 +20,11 @@ type SettingProps = {
 function Setting(props: SettingProps) {
   const {
     className,
+    showSymbolPreset,
     alwaysShow,
     range,
     unit,
+    onSelectSymbol,
     onReset,
     onRangeChange,
     onUnitChange,
@@ -47,6 +51,23 @@ function Setting(props: SettingProps) {
         setHover(false);
       }}
     >
+      {showSymbolPreset && (
+        <div className={styles.list}>
+          <div className={styles.hint}>Symbol you may like:</div>
+          {["🎄", "🍎", "🍏", "🏖️"].map((s) => (
+            <button
+              key={s}
+              className={cx(styles.item, styles.itemActive)}
+              onClick={() => {
+                onSelectSymbol(s);
+              }}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className={styles.list}>
         <div className={styles.hint}>Progress of current</div>
         {rangeList.map((r) => (

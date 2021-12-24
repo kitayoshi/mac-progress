@@ -1,11 +1,18 @@
 .main {
   align-items: center;
-  background: #000;
-  color: #fff;
+  background: var(--background);
+  color: var(--color);
   display: flex;
   height: 100vh;
   justify-content: center;
   width: 100vw;
+}
+
+.themeChristmas {
+  --background: #fff;
+  --color: #a6231e;
+  --progress-background: rgba(30, 121, 44, 0.1);
+  --progress-border: #1e792c;
 }
 
 .progressContainer {

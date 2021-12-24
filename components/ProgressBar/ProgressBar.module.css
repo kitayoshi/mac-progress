@@ -8,8 +8,8 @@
 }
 
 .background {
-  background: #474747;
-  border: 0.5px solid #808080;
+  background: var(--progress-background);
+  border: 0.5px solid var(--progress-border);
   border-radius: 4px;
   height: 100%;
   left: 0;
@@ -19,7 +19,7 @@
 }
 
 .inner {
-  background-color: #fff;
+  background-color: var(--color);
   position: relative;
   transition: width 1000ms ease-out;
 }
