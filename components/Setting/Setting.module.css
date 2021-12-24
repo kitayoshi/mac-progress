@@ -1,5 +1,6 @@
 .root {
   align-items: center;
+  background: var(--background);
   display: flex;
   flex-direction: column;
   font-size: 13px;
