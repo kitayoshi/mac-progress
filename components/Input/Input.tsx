@@ -22,7 +22,6 @@ function Input(props: InputProps) {
     <input
       ref={inputElementRef}
       className={cx(styles.root, className)}
-      maxLength={1}
       value={value}
       onChange={(e) => {
         onChange(e.target.value);
