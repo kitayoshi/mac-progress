@@ -32,7 +32,7 @@ function Setting(props: SettingProps) {
   const [hover, setHover] = useState(false)
 
   const toggleFullScreen = useCallback(() => {
-    if (!document.fullscreenElement) {
+    if (!window.document.fullscreenElement) {
       window.document.documentElement.requestFullscreen()
     } else {
       window.document.exitFullscreen?.()

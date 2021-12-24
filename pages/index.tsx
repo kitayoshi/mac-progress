@@ -30,6 +30,10 @@ const Home: NextPage = () => {
   const changeSymbol = useCallback((s: string) => {
     window.localStorage.setItem('progressSymbol', s)
     setSymbol(s)
+
+    if (!window.document.fullscreenElement) {
+      window.document.documentElement.requestFullscreen()
+    }
   }, [])
 
   const changeRange = useCallback((r: Range) => {
@@ -52,6 +56,9 @@ const Home: NextPage = () => {
   }, [symbol, changeRange, changeUnit])
 
   const reset = useCallback(() => {
+    if (window.document.fullscreenElement) {
+      window.document.exitFullscreen?.()
+    }
     window.localStorage.removeItem('progressSymbol')
     window.localStorage.removeItem('progressRange')
     window.localStorage.removeItem('progressUnit')
