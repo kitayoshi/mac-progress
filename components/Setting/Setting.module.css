@@ -1,0 +1,51 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+}
+
+.show {
+  opacity: 1;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  line-height: 24px;
+}
+
+.item {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0 4px;
+  opacity: 0.3;
+  padding: 0;
+  transition: 0.3s opacity;
+}
+
+.item:hover {
+  opacity: 0.8;
+}
+
+.itemActive {
+  opacity: 1;
+}
+
+.button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  height: 24px;
+  margin: 0 4px;
+  padding: 0;
+}

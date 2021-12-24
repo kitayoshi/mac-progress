@@ -1,0 +1,25 @@
+.root {
+  border-radius: 4px;
+  display: flex;
+  height: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 260px;
+}
+
+.background {
+  background: #474747;
+  border: 0.5px solid #808080;
+  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.inner {
+  background-color: #fff;
+  position: relative;
+  transition: width 1000ms ease-out;
+}

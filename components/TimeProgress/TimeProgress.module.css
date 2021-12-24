@@ -1,0 +1,11 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hint {
+  margin-top: 16px;
+  font-size: 12px;
+  height: 18px;
+}

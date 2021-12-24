@@ -1,0 +1,16 @@
+.root {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  text-align: center;
+  width: 50vw;
+}
+
+.root:focus {
+  outline: none;
+}
+
+.root::placeholder {
+  text-align: center;
+}
