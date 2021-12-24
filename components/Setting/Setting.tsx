@@ -7,7 +7,6 @@ import styles from './Setting.module.css'
 
 type SettingProps = {
   className?: string
-  showSymbolPreset: boolean
   alwaysShow: boolean
   range: Range
   unit: Unit
@@ -20,7 +19,6 @@ type SettingProps = {
 function Setting(props: SettingProps) {
   const {
     className,
-    showSymbolPreset,
     alwaysShow,
     range,
     unit,
@@ -87,32 +85,32 @@ function Setting(props: SettingProps) {
         </div>
       </div>
 
-      {showSymbolPreset && (
-        <div className={styles.list}>
-          <div className={styles.hint}>Symbol you may like</div>
-          <div className={styles.innerList}>
-            {['🎄', '🍎', '🍏', '🏖️'].map((s) => (
-              <button
-                key={s}
-                className={cx(styles.item, styles.itemActive)}
-                onClick={() => {
-                  onSelectSymbol(s)
-                }}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
+      <div className={styles.list}>
+        <div className={styles.hint}>Symbol you may like</div>
+        <div className={styles.innerList}>
+          {['🎄', '🍎', '🍏', '🏖️'].map((s) => (
+            <button
+              key={s}
+              className={cx(styles.item, styles.itemActive)}
+              onClick={() => {
+                onSelectSymbol(s)
+              }}
+            >
+              {s}
+            </button>
+          ))}
         </div>
-      )}
+      </div>
 
-      <div>
+      <div className={styles.innerList}>
         <button className={styles.item} onClick={toggleFullScreen}>
           Full Screen
         </button>
         <button className={styles.item} onClick={onReset}>
-          Reset
+          Press ESC to Reset
         </button>
+      </div>
+      <div className={styles.innerList}>
         <a
           className={styles.item}
           href="https://github.com/kitayoshi/mac-progress"

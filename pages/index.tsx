@@ -67,6 +67,14 @@ const Home: NextPage = () => {
     setUnit('Minute')
   }, [])
 
+  useEffect(() => {
+    window.document.addEventListener('keydown', (e) => {
+      if (e.code === 'Escape') {
+        reset()
+      }
+    })
+  }, [reset])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -96,7 +104,6 @@ const Home: NextPage = () => {
 
         <Setting
           alwaysShow={!Boolean(symbol) && init}
-          showSymbolPreset={!Boolean(symbol)}
           onSelectSymbol={changeSymbol}
           className={styles.setting}
           range={range}

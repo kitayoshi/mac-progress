@@ -4,13 +4,15 @@
   flex-direction: column;
   font-size: 13px;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: all 1s;
+  transform: translateY(10%);
   padding: 24px 0;
   width: 100%;
 }
 
 .show {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .list {
@@ -28,6 +30,7 @@
 .innerList {
   align-items: center;
   display: flex;
+  line-height: 24px;
 }
 
 .item {
