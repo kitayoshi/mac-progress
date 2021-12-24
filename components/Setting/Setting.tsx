@@ -51,54 +51,60 @@ function Setting(props: SettingProps) {
         setHover(false)
       }}
     >
-      {showSymbolPreset && (
-        <div className={styles.list}>
-          <div className={styles.hint}>Symbol you may like:</div>
-          {['🎄', '🍎', '🍏', '🏖️'].map((s) => (
+      <div className={styles.list}>
+        <div className={styles.hint}>Progress of current</div>
+        <div className={styles.innerList}>
+          {rangeList.map((r) => (
             <button
-              key={s}
-              className={cx(styles.item, styles.itemActive)}
+              key={r}
+              className={cx(styles.item, { [styles.itemActive]: range === r })}
               onClick={() => {
-                onSelectSymbol(s)
+                onRangeChange(r)
+                const unitList = getRangeUnitList(r)
+                onUnitChange(unitList[unitList.length - 1] as Unit)
               }}
             >
-              {s}
+              {r}
             </button>
           ))}
         </div>
-      )}
-
-      <div className={styles.list}>
-        <div className={styles.hint}>Progress of current</div>
-        {rangeList.map((r) => (
-          <button
-            key={r}
-            className={cx(styles.item, { [styles.itemActive]: range === r })}
-            onClick={() => {
-              onRangeChange(r)
-              const unitList = getRangeUnitList(r)
-              onUnitChange(unitList[unitList.length - 1] as Unit)
-            }}
-          >
-            {r}
-          </button>
-        ))}
       </div>
 
       <div className={styles.list}>
         <div className={styles.hint}>in</div>
-        {getRangeUnitList(range).map((u) => (
-          <button
-            key={u}
-            className={cx(styles.item, { [styles.itemActive]: unit === u })}
-            onClick={() => {
-              onUnitChange(u as Unit)
-            }}
-          >
-            {u}
-          </button>
-        ))}
+        <div className={styles.innerList}>
+          {getRangeUnitList(range).map((u) => (
+            <button
+              key={u}
+              className={cx(styles.item, { [styles.itemActive]: unit === u })}
+              onClick={() => {
+                onUnitChange(u as Unit)
+              }}
+            >
+              {u}
+            </button>
+          ))}
+        </div>
       </div>
+
+      {showSymbolPreset && (
+        <div className={styles.list}>
+          <div className={styles.hint}>Symbol you may like</div>
+          <div className={styles.innerList}>
+            {['🎄', '🍎', '🍏', '🏖️'].map((s) => (
+              <button
+                key={s}
+                className={cx(styles.item, styles.itemActive)}
+                onClick={() => {
+                  onSelectSymbol(s)
+                }}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div>
         <button className={styles.item} onClick={toggleFullScreen}>
