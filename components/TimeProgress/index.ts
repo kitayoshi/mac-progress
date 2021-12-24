@@ -1,1 +1,1 @@
-export { default } from "./TimeProgress";
+export { default } from './TimeProgress'

@@ -1,21 +1,21 @@
-import cx from "classnames";
-import { useState, useCallback } from "react";
+import cx from 'classnames'
+import { useState, useCallback } from 'react'
 
-import { Range, Unit, rangeList, getRangeUnitList } from "../../utils/time";
+import { Range, Unit, rangeList, getRangeUnitList } from '../../utils/time'
 
-import styles from "./Setting.module.css";
+import styles from './Setting.module.css'
 
 type SettingProps = {
-  className?: string;
-  showSymbolPreset: boolean;
-  alwaysShow: boolean;
-  range: Range;
-  unit: Unit;
-  onSelectSymbol: (symbol: string) => void;
-  onReset: () => void;
-  onRangeChange: (range: Range) => void;
-  onUnitChange: (unit: Unit) => void;
-};
+  className?: string
+  showSymbolPreset: boolean
+  alwaysShow: boolean
+  range: Range
+  unit: Unit
+  onSelectSymbol: (symbol: string) => void
+  onReset: () => void
+  onRangeChange: (range: Range) => void
+  onUnitChange: (unit: Unit) => void
+}
 
 function Setting(props: SettingProps) {
   const {
@@ -28,16 +28,16 @@ function Setting(props: SettingProps) {
     onReset,
     onRangeChange,
     onUnitChange,
-  } = props;
-  const [hover, setHover] = useState(false);
+  } = props
+  const [hover, setHover] = useState(false)
 
   const toggleFullScreen = useCallback(() => {
     if (!document.fullscreenElement) {
-      window.document.documentElement.requestFullscreen();
+      window.document.documentElement.requestFullscreen()
     } else {
-      window.document.exitFullscreen?.();
+      window.document.exitFullscreen?.()
     }
-  }, []);
+  }, [])
 
   return (
     <div
@@ -45,21 +45,21 @@ function Setting(props: SettingProps) {
         [styles.show]: alwaysShow || hover,
       })}
       onMouseEnter={() => {
-        setHover(true);
+        setHover(true)
       }}
       onMouseLeave={() => {
-        setHover(false);
+        setHover(false)
       }}
     >
       {showSymbolPreset && (
         <div className={styles.list}>
           <div className={styles.hint}>Symbol you may like:</div>
-          {["🎄", "🍎", "🍏", "🏖️"].map((s) => (
+          {['🎄', '🍎', '🍏', '🏖️'].map((s) => (
             <button
               key={s}
               className={cx(styles.item, styles.itemActive)}
               onClick={() => {
-                onSelectSymbol(s);
+                onSelectSymbol(s)
               }}
             >
               {s}
@@ -75,9 +75,9 @@ function Setting(props: SettingProps) {
             key={r}
             className={cx(styles.item, { [styles.itemActive]: range === r })}
             onClick={() => {
-              onRangeChange(r);
-              const unitList = getRangeUnitList(r);
-              onUnitChange(unitList[unitList.length - 1] as Unit);
+              onRangeChange(r)
+              const unitList = getRangeUnitList(r)
+              onUnitChange(unitList[unitList.length - 1] as Unit)
             }}
           >
             {r}
@@ -92,7 +92,7 @@ function Setting(props: SettingProps) {
             key={u}
             className={cx(styles.item, { [styles.itemActive]: unit === u })}
             onClick={() => {
-              onUnitChange(u as Unit);
+              onUnitChange(u as Unit)
             }}
           >
             {u}
@@ -125,7 +125,7 @@ function Setting(props: SettingProps) {
         </a>
       </div>
     </div>
-  );
+  )
 }
 
-export default Setting;
+export default Setting
