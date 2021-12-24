@@ -10,11 +10,14 @@ import { Range, Unit } from '../utils/time'
 
 import styles from '../styles/Home.module.css'
 
+const defaultRange = 'Minute'
+const defaultUnit = 'Second'
+
 const Home: NextPage = () => {
   const [theme, setTheme] = useState('dark')
   const [symbol, setSymbol] = useState('')
-  const [range, setRange] = useState<Range>('Hour')
-  const [unit, setUnit] = useState<Unit>('Minute')
+  const [range, setRange] = useState<Range>(defaultRange)
+  const [unit, setUnit] = useState<Unit>(defaultUnit)
 
   const [init, setInit] = useState(false)
   useEffect(() => {
@@ -63,8 +66,8 @@ const Home: NextPage = () => {
     window.localStorage.removeItem('progressRange')
     window.localStorage.removeItem('progressUnit')
     setSymbol('')
-    setRange('Hour')
-    setUnit('Minute')
+    setRange(defaultRange)
+    setUnit(defaultUnit)
   }, [])
 
   useEffect(() => {
