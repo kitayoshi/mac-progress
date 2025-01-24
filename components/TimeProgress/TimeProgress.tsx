@@ -25,7 +25,7 @@ function TimeProgress(props: TimeProgressProps) {
   const [end, setEnd] = useState<Date>(getStartEnd(new Date(), range)[1])
   const [current, setCurrent] = useState<Date>(start)
 
-  const intervalRef = useRef<number>()
+  const intervalRef = useRef<number | null>(null)
 
   const updateTime = useCallback(() => {
     const current = new Date()
@@ -40,6 +40,7 @@ function TimeProgress(props: TimeProgressProps) {
       updateTime()
     }, 1000)
     return () => {
+      if (!intervalRef.current) return
       window.clearInterval(intervalRef.current)
     }
   }, [updateTime])
@@ -63,10 +64,10 @@ function TimeProgress(props: TimeProgressProps) {
         numeric: 'always',
       }).format(
         -value,
-        finalUnit.toLocaleLowerCase() as Intl.RelativeTimeFormatUnit
+        finalUnit.toLocaleLowerCase() as Intl.RelativeTimeFormatUnit,
       )
     },
-    [unit]
+    [unit],
   )
 
   const hint = useMemo(() => {
